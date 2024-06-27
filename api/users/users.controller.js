@@ -80,8 +80,7 @@ class UsersController {
       
         const id = req.params.userId;
         const articles = await articleService.getAllByUserId(id);
-        const user = await usersService.get(id)
-        res.json({user: user, articles: articles});
+        res.json(articles);
     }catch(err){
         next(err);
     }

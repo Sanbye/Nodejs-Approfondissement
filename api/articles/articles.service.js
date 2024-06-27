@@ -1,3 +1,4 @@
+const { matches } = require("validator");
 const Article = require("./articles.schema")
 
 class ArticleService {
@@ -15,7 +16,11 @@ class ArticleService {
     }
 
     getAllByUserId(id){
-        return Article.find({user: id})
+        return Article.find().populate({
+            path: "user",
+            select: "-password",
+            match: { id: `${id}` }
+        });
     }
 }
 

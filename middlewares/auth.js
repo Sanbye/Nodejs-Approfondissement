@@ -2,6 +2,7 @@ const UnauthorizedError = require("../errors/unauthorized");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 const usersService = require("../api/users/users.service");
+const { use } = require("../api/users/users.router");
 
 module.exports = async (req, res, next) => {
   try {

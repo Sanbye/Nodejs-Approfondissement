@@ -7,8 +7,6 @@ const userRouter = require("./api/users/users.router");
 const articlesRouter = require("./api/articles/articles.router");
 const usersController = require("./api/users/users.controller");
 const authMiddleware = require("./middlewares/auth");
-const path = require("path");
-require("./api/articles/articles.schema"); // temporaire
 const app = express();
 
 const server = http.createServer(app);
@@ -31,6 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/users", authMiddleware, userRouter);
+app.get("/api/users/:userId/articles", usersController.getAllArticlesByUserId);
 app.use("/api/articles", authMiddleware, articlesRouter);
 app.post("/login", usersController.login);
 

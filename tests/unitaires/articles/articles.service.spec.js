@@ -1,5 +1,0 @@
-
-
-describe("tester service articles", () => {
-    
-});
